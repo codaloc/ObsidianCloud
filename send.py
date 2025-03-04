@@ -59,7 +59,7 @@ def decrypt_inset_dir(target_dir,k,n,current_dir,destination_path):
     print(decrypted_target_dir)
 
     decrypted_new_destination = os.path.join(destination_path, decrypted_target_dir.decode())
-    if not os.path.exists(decrypted_new_destination):
+    if not os.path.exists(decrypted_target_dir):
         os.mkdir(decrypted_target_dir)
 
     inset_dir_path = os.path.join(current_dir, target_dir)
@@ -93,10 +93,9 @@ if __name__ == "__main__":
     setnonce = b"\x00" * 8
 
     #origin_folder = os.path.join(os.getcwd(), "fake-sparc")
-    origin_folder = "fake-sparc"
+    origin_folder = "to-backup/sparc-early-march"
     encrypted_folder = "encrypted"
     decrypted_folder = "decrypted"
 
-    #encrypt_inset_dirs(origin_folder,key,setnonce,encrypted_folder)
-    #encrypt_dir(origin_folder,key,setnonce,encrypted_folder)
+    encrypt_dir(origin_folder,key,setnonce,encrypted_folder)
     decrypt_dir(encrypted_folder,key,setnonce,decrypted_folder)
